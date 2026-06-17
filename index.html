@@ -100,6 +100,7 @@
         a { color: inherit; text-decoration: none; }
         button { cursor: pointer; font-family: inherit; }
         h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.04em; line-height: 1.1; }
+        .section-label { font-family: var(--font-display); font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; display: block; }
         .section-title { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--navy); margin-bottom: 1rem; text-wrap: balance; }
         .section-subtitle { font-size: 1.1rem; color: var(--text-mid); max-width: 600px; line-height: 1.8; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
@@ -131,6 +132,8 @@
         .hero-bg { position: absolute; inset: 0; background: url('images/hero-barn-sign.jpg') center/cover no-repeat; }
         .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21,34,56,0.92) 0%, rgba(21,34,56,0.7) 40%, rgba(21,34,56,0.4) 100%); }
         .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 8rem 0 4rem; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(191,27,44,0.15); border: 1px solid rgba(191,27,44,0.3); color: var(--white); padding: 0.5rem 1rem; border-radius: 2px; font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; animation: fadeInUp 0.8s ease both; }
+        .hero-badge::before { content: '\2605'; color: var(--red-light); }
         .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); color: var(--white); line-height: 0.95; margin-bottom: 1.5rem; text-wrap: balance; animation: fadeInUp 0.8s ease 0.15s both; }
         .hero h1 .accent { color: var(--red-light); }
         .hero-description { font-size: 1.15rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 2.5rem; max-width: 520px; animation: fadeInUp 0.8s ease 0.3s both; }
@@ -214,6 +217,7 @@
 
         /* TESTIMONIALS */
         .testimonials { background: var(--navy); color: var(--white); overflow: hidden; }
+        .testimonials .section-label { color: var(--red-light); }
         .testimonials .section-title { color: var(--white); }
         .testimonials-header { text-align: center; margin-bottom: 4rem; }
         .testimonials-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 0 auto; }
@@ -275,6 +279,8 @@
         .star-divider.is-start { justify-content: flex-start; }
         .contact-intro { margin-bottom: 3rem; }
         .contact-fb { color: var(--red); font-weight: 600; }
+        .contact-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(191,27,44,0.08); border: 1px solid rgba(191,27,44,0.15); color: var(--red); padding: 0.4rem 0.75rem; border-radius: 2px; font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.12em; margin-top: 0.5rem; margin-right: 0.5rem; }
+        .contact-badges { margin-top: 1rem; }
         .form-success a { color: var(--red); }
         .footer-brand .nav-logo { margin-bottom: 0.5rem; }
         .footer-brand img { height: 60px; border-radius: 4px; }
@@ -308,7 +314,8 @@
     <section class="hero" id="hero">
         <div class="hero-bg"></div>
         <div class="container hero-content">
-            <h1>Your home deserves <span class="accent">better.</span></h1>
+            <div class="hero-badge">VETERAN OWNED &bull; LICENSED IN THE STATE OF MAINE</div>
+            <h1>YOUR HOME<br>DESERVES <span class="accent">BETTER.</span></h1>
             <p class="hero-description">Veteran owned and operated. Licensed in the State of Maine. Proudly serving the Greater Houlton area with professional residential painting you can trust.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn btn-primary">GET A FREE QUOTE</a>
@@ -332,7 +339,7 @@
     <section class="services section-padding" id="services">
         <div class="container">
             <div class="services-header reveal">
-                
+                <span class="section-label">WHAT WE DO</span>
                 <h2 class="section-title">OUR SERVICES</h2>
                 <div class="star-divider"><span>&#9733;</span></div>
                 <p class="section-subtitle">From full exterior repaints to interior transformations, we handle every brush stroke with care. No shortcuts. No cut corners.</p>
@@ -366,7 +373,7 @@
     <section class="section-padding" id="gallery">
         <div class="container">
             <div class="gallery-header reveal">
-                
+                <span class="section-label">SEE THE WORK</span>
                 <h2 class="section-title">THE PROOF IS IN THE PAINT</h2>
                 <div class="star-divider"><span>&#9733;</span></div>
                 <p class="section-subtitle">Every photo here is a real project completed by our crew. No stock photos. What you see is what you get.</p>
@@ -378,9 +385,9 @@
 
             <div class="gallery-section active" id="tab-beforeafter">
                 <div class="ba-grid reveal">
-                    <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/before-1.jpg" alt="Beige craftsman front door with sidelights before repaint" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/after-1.jpg" alt="Same craftsman door painted bold statement red with black trim" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div><div class="ba-caption">Front Door &#8212; Cream to Statement Red</div></div>
-                    <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/before-2.jpg" alt="Faded log home mid-restain with Freedom Painting crew on lift" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/after-2.jpg" alt="Log home fully restained to rich brown by Freedom Painting" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div><div class="ba-caption">Log Home &#8212; Faded to Rich Brown</div></div>
-                    <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/before-3.jpg" alt="Weathered grey deck with peeling paint before restoration" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/after-3.jpg" alt="Same deck after full restoration with crisp white paint" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div><div class="ba-caption">Deck &#8212; Weathered to Like-New</div></div>
+                    <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/before-1.jpg" alt="Beige craftsman front door with sidelights before repaint" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/after-1.jpg" alt="Same craftsman door painted bold red with black trim" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div></div>
+                    <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/before-2.jpg" alt="Faded log home mid-restain with Freedom Painting crew on lift" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/after-2.jpg" alt="Log home fully restained to rich brown by Freedom Painting" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div></div>
+                    <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/before-3.jpg" alt="Weathered grey deck with peeling paint before restoration" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/after-3.jpg" alt="Same deck after full restoration with crisp white paint" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div></div>
                     <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/b4m.jpg" alt="House exterior before painting with peeling paint in Houlton Maine" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/b4k.jpg" alt="House exterior after full repaint by Freedom Painting in Houlton Maine" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div><div class="ba-caption">Full Exterior &#8212; Peeling to Pristine</div></div>
                     <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/b43.jpg" alt="Garage with natural cedar siding before painting" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/b44.jpg" alt="Garage after exterior painting with bold blue finish" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div><div class="ba-caption">Garage &#8212; Cedar to Bold Blue</div></div>
                     <div class="ba-pair"><div class="ba-images"><div class="ba-side"><img src="images/b48.jpg" alt="Home exterior before full repaint" loading="lazy" decoding="async"><span class="ba-label before">BEFORE</span></div><div class="ba-side"><img src="images/b49.jpg" alt="Home exterior after complete transformation by Freedom Painting" loading="lazy" decoding="async"><span class="ba-label after">AFTER</span></div></div><div class="ba-caption">Full Exterior &#8212; Complete Transformation</div></div>
@@ -471,7 +478,7 @@
     <section class="testimonials section-padding" id="testimonials">
         <div class="container">
             <div class="testimonials-header reveal">
-                
+                <span class="section-label">REAL REVIEWS FROM REAL CUSTOMERS</span>
                 <h2 class="section-title">DON'T TAKE OUR WORD FOR IT</h2>
                 <div class="star-divider"><span>&#9733;</span></div>
                 <p class="section-subtitle">58 five-star reviews on Facebook. 100% recommend. These are real people sharing real experiences.</p>
@@ -497,7 +504,7 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="reveal">
-                    
+                    <span class="section-label">GET IN TOUCH</span>
                     <h2 class="section-title">LET'S TALK ABOUT YOUR PROJECT</h2>
                     <div class="star-divider is-start"><span>&#9733;</span></div>
                     <p class="section-subtitle contact-intro">Whether you need a full exterior repaint or just a room refreshed, we'd love to hear about your project. Free quotes. No pressure. Just honest work from a veteran-owned company you can trust.</p>
@@ -505,6 +512,7 @@
                     <div class="contact-info-block"><h3>EMAIL US</h3><a href="mailto:freedompainting207@outlook.com">freedompainting207@outlook.com</a></div>
                     <div class="contact-info-block"><h3>SERVICE AREA</h3><p>Proudly serving the <strong>Greater Houlton Area</strong> and surrounding communities. Not sure if we cover your area? Give us a call or text &#8212; we're happy to check availability for your project.</p></div>
                     <div class="contact-info-block"><h3>FOLLOW US</h3><a href="https://www.facebook.com/freedompainting207" target="_blank" rel="noopener" class="contact-fb">facebook.com/freedompainting207</a></div>
+                    <div class="contact-badges"><span class="contact-badge">&#127894; VETERAN OWNED</span><span class="contact-badge">&#128203; LICENSED IN MAINE</span><span class="contact-badge">&#11088; 100% RECOMMENDED</span></div>
                 </div>
                 <div class="contact-form-card reveal" id="contactFormCard">
                     <h3>REQUEST A FREE QUOTE</h3>
