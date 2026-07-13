@@ -1,6 +1,14 @@
 # freedom-painting
 
-Static single-file site (index.html), no build step. Client: Freedom Painting, freedompainting.us.
+Static multi-page site, no build step. Client: Freedom Painting, freedompainting.us.
+
+## Pages
+
+- `index.html` (home), `exterior-painting/`, `interior-painting/`, `house-painter-houlton-me/`.
+- CSS is shared: `css/site.css`. Every page links it; nothing is inline anymore. Edit the stylesheet once, not per page.
+- `url()` paths in `css/site.css` must be root-relative (`/images/...`), since the sheet lives at `/css/`.
+- Subpage asset paths are root-relative (`/images/...`) so they resolve from a nested directory.
+- No doorway pages: a location or service page only ships when there is real evidence (a named local job, a testimonial, gallery work). Do not mass-produce "painter in [town]" templates.
 
 ## Deploy
 

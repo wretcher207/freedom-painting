@@ -70,227 +70,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy: #152238;
-            --navy-light: #1E3352;
-            --red: #BF1B2C;
-            --red-dark: #991624;
-            --red-light: #E8354A;
-            --white: #FFFFFF;
-            --cream: #F7F4EF;
-            --cream-dark: #EDE8DF;
-            --blue-tint: #E3EAF3;
-            --text-dark: #1A1A1A;
-            --text-mid: #4A4A4A;
-            --text-light: #7A7A7A;
-            --gold: #C9A84C;
-            --shadow-sm: 0 2px 8px rgba(21, 34, 56, 0.08);
-            --shadow-md: 0 4px 20px rgba(21, 34, 56, 0.12);
-            --shadow-lg: 0 8px 40px rgba(21, 34, 56, 0.18);
-            --radius: 4px;
-            --font-display: 'Bebas Neue', sans-serif;
-            --font-body: 'Lora', Georgia, serif;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body { font-family: var(--font-body); color: var(--text-dark); background: var(--white); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-        img { max-width: 100%; height: auto; display: block; }
-        a { color: inherit; text-decoration: none; }
-        button { cursor: pointer; font-family: inherit; }
-        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; letter-spacing: 0.04em; line-height: 1.1; }
-        .section-label { font-family: var(--font-display); font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.5rem; display: block; }
-        .section-title { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--navy); margin-bottom: 1rem; text-wrap: balance; }
-        .section-subtitle { font-size: 1.1rem; color: var(--text-mid); max-width: 600px; line-height: 1.8; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-        .section-padding { padding: 6rem 0; }
-        .star-divider { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
-        .star-divider::before, .star-divider::after { content: ''; width: 60px; height: 2px; background: var(--red); }
-        .star-divider span { color: var(--red); font-size: 1.2rem; }
-
-        /* NAV */
-        .nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 900; background: transparent; transition: var(--transition); }
-        .nav.scrolled { background: var(--navy); box-shadow: var(--shadow-md); }
-        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; max-width: 1200px; margin: 0 auto; }
-        .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
-        .nav-logo img { height: 50px; width: auto; border-radius: 4px; }
-        .nav-logo-text { font-family: var(--font-display); font-size: 1.5rem; color: var(--white); letter-spacing: 0.06em; }
-        .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-        .nav-links a { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.1em; color: var(--white); opacity: 0.85; transition: var(--transition); position: relative; }
-        .nav-links a:hover { opacity: 1; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--red); transition: var(--transition); }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-cta { background: var(--red) !important; color: var(--white) !important; padding: 0.6rem 1.5rem !important; border-radius: var(--radius); opacity: 1 !important; }
-        .nav-cta:hover { background: var(--red-dark) !important; }
-        .nav-cta::after { display: none !important; }
-        .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 5px; }
-        .nav-hamburger span { width: 28px; height: 2px; background: var(--white); transition: var(--transition); }
-
-        /* HERO */
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; background: url('images/hero-barn-sign.jpg') center/cover no-repeat; }
-        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21,34,56,0.92) 0%, rgba(21,34,56,0.7) 40%, rgba(21,34,56,0.4) 100%); }
-        .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 8rem 0 4rem; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(191,27,44,0.15); border: 1px solid rgba(191,27,44,0.3); color: var(--white); padding: 0.5rem 1rem; border-radius: 2px; font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; animation: fadeInUp 0.8s ease both; }
-        .hero-badge::before { content: '\2605'; color: var(--red-light); }
-        .hero h1 { font-size: clamp(3rem, 7vw, 5.5rem); color: var(--white); line-height: 0.95; margin-bottom: 1.5rem; text-wrap: balance; animation: fadeInUp 0.8s ease 0.15s both; }
-        .hero h1 .accent { color: var(--red-light); }
-        .hero-description { font-size: 1.15rem; color: rgba(255,255,255,0.8); line-height: 1.8; margin-bottom: 2.5rem; max-width: 520px; animation: fadeInUp 0.8s ease 0.3s both; }
-        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.45s both; }
-        .btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.1em; padding: 1rem 2rem; border: none; border-radius: var(--radius); transition: var(--transition); text-align: center; }
-        .btn-primary { background: var(--red); color: var(--white); }
-        .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.4); }
-        .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-        .btn-facebook { background: #1462C5; color: var(--white); }
-        .btn-facebook:hover { background: #114F9E; transform: translateY(-2px); }
-        .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.5); font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.15em; animation: float 2s ease-in-out infinite; }
-        .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); }
-
-        /* TRUST BANNER */
-        .trust-banner { background: var(--navy); padding: 3rem 0; text-align: center; }
-        .trust-items { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
-        .trust-item { display: flex; align-items: center; gap: 0.75rem; color: var(--white); }
-        .trust-icon { font-size: 1.8rem; }
-        .trust-text { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.08em; text-align: left; }
-        .trust-text small { display: block; font-family: var(--font-body); font-size: 0.75rem; color: rgba(255,255,255,0.72); letter-spacing: 0.02em; }
-
-        /* SERVICES */
-        .services { background: var(--cream); }
-        .services-header { text-align: center; margin-bottom: 4rem; }
-        .services-header .section-subtitle { margin: 0 auto; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .service-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: var(--transition); position: relative; overflow: hidden; display: flex; flex-direction: column; }
-        .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .service-photo { aspect-ratio: 4/3; overflow: hidden; position: relative; }
-        .service-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .service-card:hover .service-photo img { transform: scale(1.05); }
-        .service-body { padding: 1.75rem 2rem 2rem; }
-        .service-card h3 { font-size: 1.5rem; color: var(--navy); margin-bottom: 0.75rem; }
-        .service-card p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.7; }
-
-        /* GALLERY */
-        .gallery-header { text-align: center; margin-bottom: 3rem; }
-        .gallery-header .section-subtitle { margin: 0 auto; }
-        .gallery-tabs { display: flex; justify-content: center; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-        .gallery-tab { font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.1em; padding: 0.5rem 1.25rem; background: transparent; border: 1px solid var(--cream-dark); border-radius: 2px; color: var(--text-mid); transition: var(--transition); }
-        .gallery-tab.active, .gallery-tab:hover { background: var(--navy); border-color: var(--navy); color: var(--white); }
-        .gallery-section { display: none; }
-        .gallery-section.active { display: block; }
-
-        /* Before & After */
-        .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .ba-pair { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); background: var(--white); }
-        .ba-images { display: grid; grid-template-columns: 1fr 1fr; }
-        .ba-side { position: relative; overflow: hidden; aspect-ratio: 4/3; }
-        .ba-images img { width: 100%; height: 100%; object-fit: cover; }
-        .ba-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.4rem 0.75rem; font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.12em; text-align: center; color: var(--white); }
-        .ba-label.before { background: rgba(0,0,0,0.6); }
-        .ba-label.after { background: rgba(191,27,44,0.85); }
-        .ba-caption { padding: 0.75rem 1rem; font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0.06em; color: var(--navy); text-align: center; }
-
-        /* Projects grid */
-        .projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
-        .project-item { position: relative; overflow: hidden; border-radius: var(--radius); cursor: pointer; aspect-ratio: 1; }
-        .project-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
-        .project-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .project-item::after { content: ''; position: absolute; inset: 0; background: rgba(21,34,56,0.18); opacity: 0; transition: var(--transition); }
-        .project-item:hover img { transform: scale(1.06); }
-        .project-item:hover::after { opacity: 1; }
-
-        /* Lightbox */
-        .lightbox { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; padding: 2rem; }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: var(--radius); }
-        .lightbox-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--white); font-size: 2rem; opacity: 0.7; transition: var(--transition); }
-        .lightbox-close:hover { opacity: 1; }
-        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: var(--white); font-size: 1.5rem; padding: 1rem; border-radius: 50%; transition: var(--transition); }
-        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
-        .lightbox-prev { left: 1.5rem; }
-        .lightbox-next { right: 1.5rem; }
-
-        /* SOCIAL BANNER */
-        .social-banner { background: var(--red); padding: 3rem 0; text-align: center; }
-        .social-banner h3 { font-size: 2rem; color: var(--white); margin-bottom: 0.5rem; }
-        .social-banner p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-size: 1rem; }
-
-        /* TESTIMONIALS */
-        .testimonials { background: var(--navy); color: var(--white); overflow: hidden; }
-        .testimonials .section-label { color: var(--red-light); }
-        .testimonials .section-title { color: var(--white); }
-        .testimonials-header { text-align: center; margin-bottom: 4rem; }
-        .testimonials-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 0 auto; }
-        .testimonials-track-wrapper { position: relative; overflow: hidden; }
-        .testimonials-track { display: flex; gap: 1.5rem; animation: scrollTestimonials 20s linear infinite; }
-        .testimonials-track:hover { animation-play-state: paused; }
-        .testimonial-card { flex: 0 0 380px; background: var(--navy-light); border-radius: var(--radius); padding: 2rem; position: relative; }
-        .testimonial-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
-        .testimonial-text { font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-        .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 1rem; color: var(--white); }
-        .testimonial-name { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.05em; }
-        .testimonial-date { font-size: 0.8rem; color: rgba(255,255,255,0.65); }
-        .testimonial-source { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 0.75rem; color: rgba(255,255,255,0.6); font-family: var(--font-display); letter-spacing: 0.08em; }
-
-        /* CONTACT */
-        .contact { background: var(--cream); }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-        .contact-info-block { margin-bottom: 2rem; }
-        .contact-info-block h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 0.5rem; }
-        .contact-info-block p, .contact-info-block a { color: var(--text-mid); font-size: 1rem; line-height: 1.7; }
-        .contact-info-block a:hover { color: var(--red); }
-        .contact-phone { font-family: var(--font-display); font-size: 2rem !important; color: var(--navy) !important; letter-spacing: 0.04em; }
-        .contact-form-card { background: var(--white); padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-md); }
-        .contact-form-card h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 0.5rem; }
-        .contact-form-card > p { color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label { display: block; font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--navy); margin-bottom: 0.4rem; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--cream-dark); border-radius: var(--radius); font-family: var(--font-body); font-size: 0.95rem; color: var(--text-dark); background: var(--cream); transition: var(--transition); }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--navy); background: var(--white); }
-        .form-group textarea { resize: vertical; min-height: 120px; }
-        .form-submit { width: 100%; font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.1em; padding: 1rem; background: var(--red); color: var(--white); border: none; border-radius: var(--radius); transition: var(--transition); }
-        .form-submit:hover { background: var(--red-dark); }
-        .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-        .form-success { display: none; text-align: center; padding: 2rem; }
-        .form-success.active { display: block; }
-        .form-success h4 { font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; }
-
-        /* FOOTER */
-        .footer { background: var(--navy); color: var(--white); padding: 4rem 0 2rem; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .footer-brand p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.7; margin-top: 1rem; max-width: 360px; }
-        .footer h4 { font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 1.25rem; color: var(--white); }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 0.6rem; }
-        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.9rem; transition: var(--transition); }
-        .footer-links a:hover { color: var(--white); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.7); }
-
-        /* ANIMATIONS */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
-        @keyframes scrollTestimonials { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* UTILITIES */
-        .star-divider.is-start { justify-content: flex-start; }
-        .contact-intro { margin-bottom: 3rem; }
-        .contact-fb { color: var(--red); font-weight: 600; }
-        .contact-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(191,27,44,0.08); border: 1px solid rgba(191,27,44,0.15); color: var(--red); padding: 0.4rem 0.75rem; border-radius: 2px; font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.12em; margin-top: 0.5rem; margin-right: 0.5rem; }
-        .contact-badges { margin-top: 1rem; }
-        .form-success a { color: var(--red); }
-        .footer-brand .nav-logo { margin-bottom: 0.5rem; }
-        .footer-brand img { height: 60px; border-radius: 4px; }
-        .footer-meta { margin-top: 0.75rem; color: rgba(255,255,255,0.5); font-size: 0.8rem; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1024px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } .project-item.wide { grid-column: span 1; aspect-ratio: 1; } .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
-        @media (max-width: 768px) { .nav-links { display: none; } .nav-links.mobile-open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--navy); padding: 1.5rem; gap: 1rem; box-shadow: var(--shadow-md); } .nav-hamburger { display: flex; } .projects-grid { grid-template-columns: repeat(2, 1fr); } .services-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; gap: 2rem; } .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; } .form-row { grid-template-columns: 1fr; } .section-padding { padding: 4rem 0; } .testimonial-card { flex: 0 0 300px; padding: 1.5rem; } .trust-items { gap: 1.5rem; } .ba-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 480px) { .projects-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; } .hero h1 { font-size: 2.8rem; } }
-    </style>
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
@@ -350,6 +130,7 @@
                     <div class="service-body">
                         <h3>EXTERIOR PAINTING</h3>
                         <p>Siding, trim, shutters, and full exterior repaints. We prep thoroughly &#8212; scraping, sanding, priming &#8212; because paint only looks as good as the surface underneath. We work on everything from historic Victorians to modern builds.</p>
+                        <a href="/exterior-painting/" class="service-link">More on exterior painting</a>
                     </div>
                 </div>
                 <div class="service-card reveal">
@@ -357,6 +138,7 @@
                     <div class="service-body">
                         <h3>INTERIOR PAINTING</h3>
                         <p>Walls, ceilings, trim, doors, and accent walls. We protect your furniture, cover your floors, and leave zero mess behind. Crisp lines, smooth finishes, and colors that transform your space.</p>
+                        <a href="/interior-painting/" class="service-link">More on interior painting</a>
                     </div>
                 </div>
                 <div class="service-card reveal">
@@ -537,7 +319,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand"><a href="#" class="nav-logo"><img src="images/Logo.jpg" alt="Freedom Painting"></a><p>Veteran owned, licensed residential painting company serving the Greater Houlton area in Maine. Built on hard work, integrity, and American values.</p></div>
-                <div><h4>QUICK LINKS</h4><ul class="footer-links"><li><a href="#services">Services</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.facebook.com/freedompainting207" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+                <div><h4>QUICK LINKS</h4><ul class="footer-links"><li><a href="/exterior-painting/">Exterior Painting</a></li><li><a href="/interior-painting/">Interior Painting</a></li><li><a href="/house-painter-houlton-me/">Painters in Houlton</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.facebook.com/freedompainting207" target="_blank" rel="noopener">Facebook</a></li></ul></div>
                 <div><h4>CONTACT</h4><ul class="footer-links"><li><a href="tel:2075029970">(207) 502-9970</a></li><li><a href="mailto:freedompainting207@outlook.com">freedompainting207@outlook.com</a></li><li>Greater Houlton Area, ME</li><li class="footer-meta">Veteran Owned &bull; Licensed in Maine</li></ul></div>
             </div>
             <div class="footer-bottom"><span>&copy; 2025 Freedom Painting. All rights reserved. Veteran owned &amp; operated.</span><span>Licensed in the State of Maine.</span></div>
