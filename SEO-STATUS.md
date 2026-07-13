@@ -1,6 +1,6 @@
 # Freedom Painting — SEO Status
 
-> Last updated: 2026-06-16
+> Last updated: 2026-07-13
 
 ## Completed
 
@@ -21,11 +21,35 @@
 - **Phase 1 simplify** (June 2026): deleted orphaned `minerva_production.py`, deduped testimonials, removed dead labels, modernized JS
 - **Phase 2 design pass** (June 2026): stripped AI-grammar eyebrows + repeated badge chips, swapped service-card emoji circles for real Freedom Painting project photos
 
-## To Do
+## Google Business Profile — EXISTS (verified 2026-07-13)
 
-- [ ] **Set up Google Business Profile** — Need business address from Rodney. Go to business.google.com, add "Freedom Painting" as a Painter, set service area to Houlton ME, phone (207) 502-9970, website https://freedompainting.us. Verify by postcard or phone.
-- [ ] **After GBP is verified:** Add before/after photos, all three services (Exterior Painting, Interior Painting, Color Consultation), business hours, and a description mentioning veteran owned + licensed in Maine
-- [ ] **Confirm service list with Rodney** — Site advertises 3 services (Exterior / Interior / Color Consultation). Earlier backend SYSTEM_PROMPT listed 6 (also Cabinet Refinishing, Deck & Fence Staining, Wall Repair). If Rodney does these, the gallery already shows the work — add them to the services section.
+The old note here said GBP was never set up. That was wrong. Verified in-browser on
+2026-07-13: **"Freedom Painting LLC Houlton, ME"** exists, David manages it
+(profile manager view loads), category Painter, phone (207) 502-9970, website linked,
+areas served "Houlton and nearby areas".
+
+The GBP problems are different from what we thought, in priority order:
+
+- [ ] **DUPLICATE LISTING.** A second "Freedom Painting LLC" (no reviews, same phone) shows
+      in Businesses results alongside the managed one. Duplicates split ranking signals.
+      Report as duplicate / request merge into the managed profile. **Highest leverage item.**
+- [ ] **Only 1 Google review** vs 61 on Facebook. Google reviews are a top-3 local ranking
+      factor; Facebook recommendations count for nothing. Use the profile's "Ask for reviews"
+      link and have Rodney text it to past customers. **Fastest-moving lever.**
+- [ ] **Profile Strength incomplete.** Google is prompting: complete info, add photos, add
+      social profiles. 80 gallery photos exist on the site and almost none are on the profile.
+- [ ] **Hours say "Open 24 hours"** — wrong and it reads as sloppy. Set real hours.
+- [ ] **Name/NAP mismatch.** GBP = "Freedom Painting **LLC**", site = "Freedom Painting",
+      Facebook = "**Hodgdon** ME" while site/GBP = Houlton. Google prints
+      *"Missing: LLC | Show results with: LLC"* under the site result, i.e. it can't cleanly
+      tie site to profile. Make the legal name + locality identical across site, schema,
+      GBP, and Facebook.
+
+## To Do (site)
+
+- [ ] **Confirm service list with Rodney** — Site advertises 3 services (Exterior / Interior / Color Consultation). Earlier backend SYSTEM_PROMPT listed 6 (also Cabinet Refinishing, Deck & Fence Staining, Wall Repair). Evidence they DO these: gallery shows cabinet + deck work, and testimonials explicitly mention deck staining ("staining our old deck") and wall patching. Service pages are written and ready to ship once he confirms he sells them.
+- [ ] **More location pages** — only Houlton shipped. Others need a real cited job in that town first; templated "painter in [town]" pages are doorway pages and Google penalizes them.
+- [ ] **aggregateRating in homepage schema is self-serving** (58 hard-coded FB reviews). Not eligible for review rich results on a LocalBusiness and carries some policy risk. Real Google reviews are the fix.
 
 ## Site Info
 
@@ -42,3 +66,14 @@
 | Accessibility | 100 (target) |
 | Best Practices | 100 |
 | SEO | 100 |
+
+## Pages (as of 2026-07-13)
+
+| URL | Schema |
+|---|---|
+| `/` | HousePainter |
+| `/exterior-painting/` | Service + BreadcrumbList |
+| `/interior-painting/` | Service + BreadcrumbList |
+| `/house-painter-houlton-me/` | HousePainter + BreadcrumbList + FAQPage |
+
+All four in `sitemap.xml`. Resubmit the sitemap in Search Console so the three new URLs get crawled.
