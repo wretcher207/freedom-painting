@@ -27,7 +27,8 @@
 - Map pack: the managed "Freedom Painting LLC" is first, but the **duplicate listing is still there**,
   both still say **"Open 24 hours"**, and it still has **1 Google review**. The next listing,
   Js Painting Service, has **163**. Reviews are the gap.
-- Facebook still says **Hodgdon, ME** and now shows **63** reviews (site copy still says 58; copy change needs approval).
+- Facebook still says **Hodgdon, ME** and shows **63** reviews (site updated to 63 on 2026-10-17, approved by David).
+- **Hours:** Rodney asked for "24 hours" to stay as is (2026-10-17). Don't change it.
 - Not checked yet: Bing Places, Apple Business Connect, Yelp listing. The non-Google search engine
   used for this check didn't return freedompainting.us at all, so Bing Webmaster Tools is worth setting up.
 
