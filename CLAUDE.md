@@ -19,3 +19,9 @@ Static multi-page site, no build step. Client: Freedom Painting, freedompainting
 - Verify live: curl the production URL for HTTP 200 and confirm the change actually serves before calling it done.
 - Gotchas: forms go to Formspree (f/xdawlbal), there is no backend. Don't recompress the JPEGs with sips/cjpeg, they get BIGGER; use `jpegtran -optimize` (ERRORS.md). The CNAME file is live: it is what points freedompainting.us at GitHub Pages. Don't delete it. `404.html` at the root is GitHub Pages' custom not-found page.
 - Copy rule (MEMORY.md): site copy is owner-approved. Never change copy without an explicit ask.
+
+## Speed (2026-10)
+
+- Fonts are self-hosted in `/fonts` (Bebas Neue, Lora, latin subset, `@font-face` at top of `css/site.css`). No Google Fonts request.
+- Images are `<picture>` with a `.webp` sibling (and `-480.webp` for homepage gallery tiles); the `.jpg` stays as the fallback and the lightbox source. A new photo needs a `.webp` sibling and `width`/`height` on the `<img>`. `picture { display: contents }` in the stylesheet keeps the existing layout rules working.
+- The hero is an `<img>` in `.hero-bg` (not a CSS background) so it can be preloaded and served as WebP.
