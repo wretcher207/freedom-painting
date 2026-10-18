@@ -6,7 +6,7 @@ For the next chat: pick this up cold.
 
 - Live site `https://freedompainting.us/` returns HTTP 200.
 - Latest commit on `main`: [`696ade9`](https://github.com/wretcher207/freedom-painting/commit/696ade9). Pushed. Working tree clean.
-- Netlify auto-deploys from `main` (no manual deploy step).
+- GitHub Pages builds from `main` (no manual deploy step). Not Netlify.
 - Lighthouse mobile (verified locally, last run before deploy): **Accessibility 100, Best Practices 100, SEO 100, Agentic Browsing 100 — 50 passed, 0 failed**.
 
 ## What's in the repo
@@ -18,7 +18,7 @@ For the next chat: pick this up cold.
 - [MEMORY.md](MEMORY.md) — decision log; read the 2026-06-16 entry for the four-phase session that just shipped.
 - [ERRORS.md](ERRORS.md) — gotchas (image encoder behavior, Chrome MCP quirks). Read before suggesting image-compression strategies.
 - [.gitignore](.gitignore) — ignores `.review/` (local screenshots) and `.DS_Store`.
-- [CNAME](CNAME), [robots.txt](robots.txt), [sitemap.xml](sitemap.xml), [google87357928efe5f7fa.html](google87357928efe5f7fa.html) — GitHub Pages/Netlify + Search Console plumbing.
+- [CNAME](CNAME), [robots.txt](robots.txt), [sitemap.xml](sitemap.xml), [google87357928efe5f7fa.html](google87357928efe5f7fa.html) — GitHub Pages + Search Console plumbing.
 
 ## What shipped this session
 
@@ -49,7 +49,7 @@ Lighthouse via Chrome DevTools MCP, mobile device emulation. Report goes to `.re
 
 ## Key facts
 
-- **Hosting**: Netlify, deploys from this GitHub repo (`wretcher207/freedom-painting`).
+- **Hosting**: GitHub Pages, builds from `main` of this repo (`wretcher207/freedom-painting`).
 - **Form backend**: Formspree (`https://formspree.io/f/xdawlbal`) — no own backend. The deleted `minerva_production.py` was never wired in.
 - **Domain**: `freedompainting.us` (see [CNAME](CNAME)).
 - **Search Console**: verified via URL prefix, sitemap submitted.

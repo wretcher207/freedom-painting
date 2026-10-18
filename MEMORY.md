@@ -30,3 +30,23 @@ None.
 - **Google Business Profile setup** — needs Rodney's business address. See `SEO-STATUS.md` for the full steps. This is the single biggest open SEO win.
 - **Confirm service list with Rodney** — site lists 3 services (Exterior / Interior / Color Consultation). The deleted backend's system prompt listed 6 (also Cabinet Refinishing, Deck & Fence Staining, Wall Repair / Prep). The gallery already shows cabinet work and deck work, so the site is currently undersell. Either expand the services section or confirm those aren't offered.
 - **(Maybe)** Add a "Meet Rodney" moment. The testimonials name him 6+ times; the site never shows his face. Would need a photo. Flagged in Phase 2 critique but not actioned.
+
+---
+
+## 2026-10-17 — Code review, UI/UX pass, local search check
+
+### Completed (branch `fix/review-pass-oct-2026`)
+- Fixed the homepage before/after gallery. The subpage `.ba-pair` rules added in 09366f9 also matched the homepage cards, which squeezed the photos to thumbnails with captions beside them on desktop. Scoped them to `.prose .ba-pair`.
+- Mobile hero had zero side gutter (`.hero-content` padding overrode `.container`) and the SCROLL hint sat on the call button. Fixed both.
+- Form inputs 0.95rem -> 1rem so iOS doesn't zoom on focus.
+- A11y: keyboard-openable gallery tiles, labelled lightbox buttons, focus returns on close, cloned marquee cards hidden from screen readers, `prefers-reduced-motion` support.
+- Homepage schema name now "Freedom Painting LLC" (matches GBP and the subpages). Fixed p36 alt text (it's a coral deck, not blue trim). Footer year 2026. Added `404.html`.
+- Docs: hosting is GitHub Pages, not Netlify.
+
+### Decisions
+- No copy changes (review count 58 vs 63, hero H1) without David's approval.
+- Flag emoji in the trust banner renders as "US" on Windows; replacement is a creative call for David.
+
+### Next
+- GBP work outweighs anything on the site: duplicate listing, Google reviews, real hours, Facebook locality. See SEO-STATUS.md.
+- Mobile Performance is 77 (LCP 4.2 s): render-blocking Google Fonts and an upscaled portrait hero image.

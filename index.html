@@ -24,7 +24,8 @@
     {
       "@context": "https://schema.org",
       "@type": "HousePainter",
-      "name": "Freedom Painting",
+      "name": "Freedom Painting LLC",
+      "alternateName": "Freedom Painting",
       "url": "https://freedompainting.us",
       "telephone": "+12075029970",
       "email": "freedompainting207@outlook.com",
@@ -142,7 +143,7 @@
                     </div>
                 </div>
                 <div class="service-card reveal">
-                    <div class="service-photo"><img src="images/p36.jpg" alt="Home with bold blue trim color selected with Freedom Painting" loading="lazy" decoding="async"></div>
+                    <div class="service-photo"><img src="images/p36.jpg" alt="Deck and stairs painted coral with white risers by Freedom Painting" loading="lazy" decoding="async"></div>
                     <div class="service-body">
                         <h3>COLOR CONSULTATION</h3>
                         <p>Not sure what color to go with? We help you choose palettes that complement your home's architecture, your neighborhood, and your personal taste. We'll get it right.</p>
@@ -218,7 +219,7 @@
                     <div class="project-item" onclick="openLightbox(29)"><img src="images/p33.jpg" alt="Painting detail and trim work" loading="lazy" decoding="async"></div>
                     <div class="project-item" onclick="openLightbox(30)"><img src="images/p34.jpg" alt="Completed exterior painting project" loading="lazy" decoding="async"></div>
                     <div class="project-item" onclick="openLightbox(31)"><img src="images/p35.jpg" alt="Kitchen painting project" loading="lazy" decoding="async"></div>
-                    <div class="project-item wide" onclick="openLightbox(32)"><img src="images/p36.jpg" alt="House with blue trim exterior painting" loading="lazy" decoding="async"></div>
+                    <div class="project-item wide" onclick="openLightbox(32)"><img src="images/p36.jpg" alt="Deck and stairs painted coral with white risers" loading="lazy" decoding="async"></div>
                     <div class="project-item" onclick="openLightbox(33)"><img src="images/p37.jpg" alt="Red siding exterior painting" loading="lazy" decoding="async"></div>
                     <div class="project-item" onclick="openLightbox(34)"><img src="images/p38.jpg" alt="Barn style building exterior painting" loading="lazy" decoding="async"></div>
                     <div class="project-item" onclick="openLightbox(35)"><img src="images/p39.jpg" alt="Residential exterior painting" loading="lazy" decoding="async"></div>
@@ -242,11 +243,11 @@
         </div>
     </section>
 
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
-        <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project photo">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">&#10005;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)" aria-label="Previous photo">&#8249;</button>
         <img id="lightboxImg" alt="Gallery image">
-        <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</button>
+        <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)" aria-label="Next photo">&#8250;</button>
     </div>
 
     <div class="social-banner">
@@ -322,7 +323,7 @@
                 <div><h4>QUICK LINKS</h4><ul class="footer-links"><li><a href="/exterior-painting/">Exterior Painting</a></li><li><a href="/interior-painting/">Interior Painting</a></li><li><a href="/house-painter-houlton-me/">Painters in Houlton</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.facebook.com/freedompainting207" target="_blank" rel="noopener">Facebook</a></li></ul></div>
                 <div><h4>CONTACT</h4><ul class="footer-links"><li><a href="tel:2075029970">(207) 502-9970</a></li><li><a href="mailto:freedompainting207@outlook.com">freedompainting207@outlook.com</a></li><li>Greater Houlton Area, ME</li><li class="footer-meta">Veteran Owned &bull; Licensed in Maine</li></ul></div>
             </div>
-            <div class="footer-bottom"><span>&copy; 2025 Freedom Painting. All rights reserved. Veteran owned &amp; operated.</span><span>Licensed in the State of Maine.</span></div>
+            <div class="footer-bottom"><span>&copy; 2026 Freedom Painting. All rights reserved. Veteran owned &amp; operated.</span><span>Licensed in the State of Maine.</span></div>
         </div>
     </footer>
 
@@ -351,15 +352,30 @@
 
         // Duplicate testimonial cards in-place so the CSS marquee loops seamlessly.
         const testimonialsTrack = document.getElementById('testimonialsTrack');
-        if (testimonialsTrack) testimonialsTrack.innerHTML += testimonialsTrack.innerHTML;
+        // Clones are hidden from screen readers so each review is read once.
+        if (testimonialsTrack) Array.from(testimonialsTrack.children).forEach(card => {
+            const clone = card.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            testimonialsTrack.appendChild(clone);
+        });
 
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
-        const projectImages = Array.from(document.querySelectorAll('.project-item img')).map(img => img.src);
+        const projectItems = Array.from(document.querySelectorAll('.project-item'));
+        const projectImages = projectItems.map(item => item.querySelector('img'));
         let currentLightboxIndex = 0;
-        function openLightbox(index) { currentLightboxIndex = index; lightboxImg.src = projectImages[index]; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
-        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
-        function navLightbox(dir) { currentLightboxIndex = (currentLightboxIndex + dir + projectImages.length) % projectImages.length; lightboxImg.src = projectImages[currentLightboxIndex]; }
+        let lastFocused = null;
+        function showLightboxImage(index) { lightboxImg.src = projectImages[index].src; lightboxImg.alt = projectImages[index].alt; }
+        function openLightbox(index) { currentLightboxIndex = index; lastFocused = document.activeElement; showLightboxImage(index); lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; lightbox.querySelector('.lightbox-close').focus(); }
+        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; if (lastFocused) lastFocused.focus(); }
+        function navLightbox(dir) { currentLightboxIndex = (currentLightboxIndex + dir + projectImages.length) % projectImages.length; showLightboxImage(currentLightboxIndex); }
+        // Make gallery tiles reachable and openable from the keyboard.
+        projectItems.forEach((item, i) => {
+            item.setAttribute('role', 'button');
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('aria-label', 'Open photo: ' + projectImages[i].alt);
+            item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); } });
+        });
         lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
         document.addEventListener('keydown', e => {
             if (!lightbox.classList.contains('active')) return;

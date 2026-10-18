@@ -1,6 +1,6 @@
 # Freedom Painting — SEO Status
 
-> Last updated: 2026-07-13
+> Last updated: 2026-10-17
 
 ## Completed
 
@@ -20,6 +20,16 @@
 - **Accessibility fixes** to pass Lighthouse 100: bumped contrast on `.testimonial-date`, `.testimonial-source`, `.trust-text small`, and `.btn-facebook` background
 - **Phase 1 simplify** (June 2026): deleted orphaned `minerva_production.py`, deduped testimonials, removed dead labels, modernized JS
 - **Phase 2 design pass** (June 2026): stripped AI-grammar eyebrows + repeated badge chips, swapped service-card emoji circles for real Freedom Painting project photos
+
+## Google check 2026-10-17 ("house painters houlton me")
+
+- Site is the **#1 organic result**; the Houlton page also ranks on page 1.
+- Map pack: the managed "Freedom Painting LLC" is first, but the **duplicate listing is still there**,
+  both still say **"Open 24 hours"**, and it still has **1 Google review**. The next listing,
+  Js Painting Service, has **163**. Reviews are the gap.
+- Facebook still says **Hodgdon, ME** and now shows **63** reviews (site copy still says 58; copy change needs approval).
+- Not checked yet: Bing Places, Apple Business Connect, Yelp listing. The non-Google search engine
+  used for this check didn't return freedompainting.us at all, so Bing Webmaster Tools is worth setting up.
 
 ## Google Business Profile — EXISTS (verified 2026-07-13)
 
@@ -54,7 +64,7 @@ The GBP problems are different from what we thought, in priority order:
 ## Site Info
 
 - **URL:** https://freedompainting.us
-- **Hosting:** Netlify (deploys from GitHub repo)
+- **Hosting:** GitHub Pages (builds from `main`)
 - **Repo:** https://github.com/wretcher207/freedom-painting.git
 - **Tech:** Single-page static HTML site
 - **Search Console:** Verified (URL prefix method)
